@@ -246,11 +246,82 @@ fing-updater, perplexity-updater, Perplexity-Roaming, ms-playwright, ms-playwrig
 ---
 
 ## 📋 CHECKPOINT — ¿DÓNDE EXACTAMENTE NOS QUEDAMOS?
-**Fecha:** 2026-04-02 21:50 CST
-**Sesión actual:** Recuperación de memoria + consolidación de hilos
-**Último comando exitoso:** Verificación de disco (8.15 GB libres), GitHub auth OK, extensiones listadas
-**Bloqueante actual:** NPM symlink roto impide instalar MCPs
-**Siguiente acción requerida:** Reparar symlink de npm, luego instalar MCPs
+**Fecha:** 2026-04-02 22:10 CST
+**Sesión actual:** Recuperación de memoria + consolidación + instalación de MCPs + arranque de Codespace
+
+### Lo ejecutado en esta sesión (2026-04-02 21:02 → 22:10):
+1. ✅ Auditoría completa de extensiones de Antigravity (8 encontradas, Codex incluido)
+2. ✅ Lectura completa de plan_maestro.md, resultados_optimizacion.md, optimizacion_pc.md
+3. ✅ Lectura completa de NEXUS_OPERATOR_MEMORY.md, SESSION_REPORT_2026-03-16.md
+4. ✅ Lectura de nexus_final_sync.log, nexus_sync.log, nexus_system_check.log, nexus_deploy.log
+5. ✅ Lectura de brainstorm_nexus.md, nexus_full_credential_map.txt
+6. ✅ Reparación del symlink de NPM (creado D:\cache\npm-global)
+7. ✅ Instalación de MCPs: server-github, server-filesystem
+8. ✅ Google Drive MCP (server-gdrive): instalado via npx, requiere OAuth para funcionar
+9. ✅ Gemini CLI: google-generativeai actualizado en Python
+10. ✅ Push de este archivo a github.com/israel2811/Lenovo.git (branch: main)
+11. ✅ Backup de este archivo en D:\NEXUS_SYSTEM_MEMORY_BACKUP.md
+12. ✅ Codespace `shiny-computing-machine` arrancado via GitHub API → State: Starting
+13. ✅ Web URL: https://shiny-computing-machine-wrjjj5rjqxj5cvv6q.github.dev
+
+### Codespace Info Detallada:
+- **Machine:** 2 cores, 8 GB RAM, 32 GB storage (Linux)
+- **Repo:** israelrealivazquez-lang/antigravity-nexus (privado)
+- **Git status:** Tiene cambios sin commitear y sin pushear
+- **DevContainer:** .devcontainer/devcontainer.json presente
+- **Retención:** Expira 2026-05-02
+
+### MCPs Instalados (D:\cache\npm-global):
+| Paquete | Versión | Estado |
+|---|---|---|
+| @modelcontextprotocol/server-github | 2025.4.8 | ✅ Funcionando |
+| @modelcontextprotocol/server-filesystem | 2026.1.14 | ✅ Funcionando |
+| @modelcontextprotocol/server-gdrive | 2025.1.14 | ⚠️ Requiere OAuth |
+| @anthropic-ai/claude-code | 2.1.91 | ✅ Instalado |
+
+### MCPs PENDIENTES de instalar:
+- Perplexity MCP (no encontrado en npm, buscar alternativa)
+- Supabase MCP (no encontrado en npm, buscar alternativa)
+- Gmail MCP (requiere Google Cloud Project + OAuth)
+- Stitch MCP
+
+### Disco al cierre:
+- C: **8.16 GB libres**
+- D: **9.80 GB libres**
+
+### ⚠️ Problemas Descubiertos en esta sesión:
+1. **OneDrive está desconectado** - "Cloud provider closed unexpectedly". Los archivos marcados como "solo en línea" son inaccesibles sin iniciar OneDrive primero
+2. **Google Drive FS no está montado** - El servicio fue desactivado del inicio para ahorrar RAM. Alternativa: usar MCP de Google Drive
+3. **Dropbox no existe localmente** - Fue desinstalado o nunca se instaló en esta PC
+4. **VS Code CLI (`code`) no funciona** - El binario no está en el PATH (posiblemente movido o Antigravity usa binario interno)
+5. **GCloud billing no habilitado** - Project project-3e440753-cf03-4587-abf requiere billing para SCP
+
+### Siguiente acción requerida:
+1. Configurar OAuth de Google para el MCP de Google Drive (permite acceso sin montar FS)
+2. Verificar que el Codespace terminó de arrancar y commitear los cambios pendientes
+3. Poblar Google Docs con el borrador de tesis (usar segment_docx_for_google_docs.py)
+
+---
+
+## 📝 LOG DE CONVERSACIÓN ACTUAL (2026-04-02 21:02 → 22:10)
+### Temas tratados (en orden cronológico):
+1. **Restauración de extensiones de VS Code** — Se verificó que Codex (OpenAI), GitHub Actions están presentes
+2. **2 cuentas GitHub en Source Control** — Confirmado que israel2811 e israelrealivazquez-lang están autenticadas
+3. **Recuperación de conversaciones** — Se leyeron plan_maestro.md y resultados_optimizacion.md
+4. **Explicación de cómo funciona la memoria** — Solo archivos .md persisten entre sesiones
+5. **Solicitud de consolidar TODAS las conversaciones** — Usuario pidió leer todas las @conversations
+6. **Memoria Perfecta** — Usuario solicitó que Antigravity NUNCA pierda contexto
+7. **Creación del NEXUS_SYSTEM_MEMORY.md** — Primer borrador con estructura básica
+8. **Documento de Inteligencia Total** — Lectura profunda de TODAS las fuentes: logs, reports, brainstorm, credentials
+9. **Instalación de MCPs** — GitHub, Filesystem, Google Drive instalados
+10. **Google Drive MCP vs FS** — Usuario sugirió usar MCP en lugar de montar el servicio local (mejor opción)
+11. **Arranque del Codespace** — Iniciado via GitHub API
+
+### Decisiones importantes del usuario:
+- Modo Auto-Allow activado (no preguntar, solo hacer)
+- La PC Celeron es SOLO un puente, el trabajo pesado va al Codespace
+- Google Drive debe accederse via MCP, NO montando el servicio localmente
+- Prioridades: Estabilidad > Velocidad > Integraciones > Memoria Perfecta
 
 ---
 
@@ -262,3 +333,6 @@ fing-updater, perplexity-updater, Perplexity-Roaming, ms-playwright, ms-playwrig
 5. **SIEMPRE** guardar resultados intermedios en archivos antes de procesarlos
 6. **NUNCA** abrir ventanas/pestañas nuevas sin permiso explícito
 7. **SIEMPRE** priorizar: Estabilidad > Velocidad > Funcionalidad > Estética
+8. **SIEMPRE** usar MCP de Google Drive en lugar de montar Google Drive FS local
+9. **SIEMPRE** delegar trabajo pesado al Codespace (no a la PC Celeron)
+10. **SIEMPRE** hacer push a GitHub después de cada archivo importante creado/modificado
